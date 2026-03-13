@@ -90,8 +90,6 @@ const Bai4 = () => {
 
       {data && (
         <div style={{ marginTop: 30 }}>
-          <h3>Kết quả</h3>
-
           <p>
             <a>Title:</a> {data.title}
           </p>
