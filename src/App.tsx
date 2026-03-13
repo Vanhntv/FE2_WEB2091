@@ -2,6 +2,10 @@ import { Link, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
 import ListPage from "./pages/list";
 import Lab2Bai2 from "./pages/lab2bai2";
+import Bai1 from "./pages/Lab3/bai1";
+import Bai2 from "./pages/Lab3/bai2";
+import Bai3 from "./pages/Lab3/bai3";
+import Bai4 from "./pages/Lab3/bai4";
 
 function App() {
   return (
@@ -31,6 +35,10 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/list" element={<ListPage />} />
           <Route path="/lab2bai2" element={<Lab2Bai2 />} />
+          <Route path="/bai1" element={<Bai1 />} />
+          <Route path="/bai2" element={<Bai2 />} />
+          <Route path="/bai3" element={<Bai3 />} />
+          <Route path="/bai4" element={<Bai4 />} />
         </Routes>
       </div>
     </>
