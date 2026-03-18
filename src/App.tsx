@@ -6,6 +6,9 @@ import Bai1 from "./pages/Lab3/bai1";
 import Bai2 from "./pages/Lab3/bai2";
 import Bai3 from "./pages/Lab3/bai3";
 import Bai4 from "./pages/Lab3/bai4";
+import Bai1L4 from "./pages/Lab4/bai1+2lab4";
+
+import Bai3L4 from "./pages/Lab4/bai3+4lab4";
 
 function App() {
   return (
@@ -39,6 +42,9 @@ function App() {
           <Route path="/bai2" element={<Bai2 />} />
           <Route path="/bai3" element={<Bai3 />} />
           <Route path="/bai4" element={<Bai4 />} />
+          <Route path="/bai1lab4" element={<Bai1L4 />} />
+
+          <Route path="/bai3lab4" element={<Bai3L4 />} />
         </Routes>
       </div>
     </>
