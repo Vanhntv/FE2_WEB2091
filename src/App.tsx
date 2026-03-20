@@ -9,6 +9,11 @@ import Bai4 from "./pages/Lab3/bai4";
 import Bai1L4 from "./pages/Lab4/bai1+2lab4";
 
 import Bai3L4 from "./pages/Lab4/bai3+4lab4";
+import Bai1Lab5 from "./pages/Lab5/bai1lab5";
+import Bai2lab5 from "./pages/Lab5/bai2lab5";
+import Bai3lab5 from "./pages/Lab5/bai3lab5";
+import Bai4lab5 from "./pages/Lab5/bai4lab5";
+import Bai5lab5 from "./pages/Lab5/bai5lab5";
 
 function App() {
   return (
@@ -43,8 +48,12 @@ function App() {
           <Route path="/bai3" element={<Bai3 />} />
           <Route path="/bai4" element={<Bai4 />} />
           <Route path="/bai1lab4" element={<Bai1L4 />} />
-
           <Route path="/bai3lab4" element={<Bai3L4 />} />
+          <Route path="/bai1lab5" element={<Bai1Lab5 />} />
+          <Route path="/bai2lab5" element={<Bai2lab5 />} />
+          <Route path="/bai3lab5" element={<Bai3lab5 />} />
+          <Route path="/bai4lab5" element={<Bai4lab5 />} />
+          <Route path="/bai5lab5" element={<Bai5lab5 />} />
         </Routes>
       </div>
     </>
