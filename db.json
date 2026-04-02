@@ -7,6 +7,13 @@
       "description": "rat ok",
       "image": "https://via.placeholder.com/150",
       "createdAt": "2026-04-02"
+    },
+    {
+      "title": "hoa hong",
+      "author": "Vanh",
+      "description": "rat dep",
+      "image": "https://picsum.photos/400/300?random=2",
+      "id": 2
     }
   ],
   "users": [

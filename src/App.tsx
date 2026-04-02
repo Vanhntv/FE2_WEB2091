@@ -17,6 +17,7 @@ import Bai5lab5 from "./pages/Lab5/bai5lab5";
 import EditPage from "./pages/EditPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AddPage from "./pages/AddPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Link to="/list">Danh sách</Link>
             <Link to="/lab2bai2">Lab2 Bài 2</Link>
             <Link to="/dashboard">Dashboard</Link>
+            <Link to="/add">Thêm mới</Link>
           </div>
           <div className="hidden md:flex items-center space-x-6">
             {" "}
@@ -60,6 +62,7 @@ function App() {
           <Route path="/bai5lab5" element={<Bai5lab5 />} />
 
           <Route path="/edit/:id" element={<EditPage />} />
+          <Route path="/add" element={<AddPage />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
