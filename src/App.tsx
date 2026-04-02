@@ -14,6 +14,7 @@ import Bai2lab5 from "./pages/Lab5/bai2lab5";
 import Bai3lab5 from "./pages/Lab5/bai3lab5";
 import Bai4lab5 from "./pages/Lab5/bai4lab5";
 import Bai5lab5 from "./pages/Lab5/bai5lab5";
+import EditPage from "./pages/EditPage";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="/bai3lab5" element={<Bai3lab5 />} />
           <Route path="/bai4lab5" element={<Bai4lab5 />} />
           <Route path="/bai5lab5" element={<Bai5lab5 />} />
+          <Route path="/edit/:id" element={<EditPage />} />
         </Routes>
       </div>
     </>

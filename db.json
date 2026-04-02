@@ -1,4 +1,13 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": 1,
+      "title": "abc",
+      "author": "dec",
+      "description": "rat ok",
+      "image": "https://via.placeholder.com/150",
+      "createdAt": "2026-04-02"
+    }
+  ],
   "users": []
 }

@@ -1,73 +1,86 @@
-import { Space, Table } from "antd";
+import { Button, Popconfirm, Space, Table, message } from "antd";
 import type { TableProps } from "antd";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 interface DataType {
-  key: string;
   id: number;
-  name: string;
-  age: number;
-  major: string;
+  title: string;
+  author: string;
+  description: string;
 }
 
-const columns: TableProps<DataType>["columns"] = [
-  {
-    title: "ID",
-    dataIndex: "id",
-    key: "id",
-  },
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "Major",
-    dataIndex: "major",
-    key: "major",
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (_: any, record: DataType) => (
-      <Space size="middle">
-        <a>Edit</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
-
-const data: DataType[] = [
-  {
-    key: "1",
-    id: 1,
-    name: "Nguyen Van A",
-    age: 20,
-    major: "IT",
-  },
-  {
-    key: "2",
-    id: 2,
-    name: "Tran Thi B",
-    age: 21,
-    major: "AI",
-  },
-  {
-    key: "3",
-    id: 3,
-    name: "Le Van C",
-    age: 19,
-    major: "Software",
-  },
-];
-
 function ListPage() {
-  return <Table columns={columns} dataSource={data} />;
+  const queryClient = useQueryClient();
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await axios.get("http://localhost:3000/products");
+      return res.data;
+    },
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: async (id: number) => {
+      return axios.delete(`http://localhost:3000/products/${id}`);
+    },
+    onSuccess: () => {
+      message.success("Xóa thành công");
+      queryClient.invalidateQueries({ queryKey: ["products"] });
+    },
+  });
+
+  const columns: TableProps<DataType>["columns"] = [
+    {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "Author",
+      dataIndex: "author",
+      key: "author",
+    },
+    {
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_: any, record: DataType) => (
+        <Space size="middle">
+          <Link to={`/edit/${record.id}`}>
+            <Button type="primary">Edit</Button>
+          </Link>
+
+          <Popconfirm
+            title="Bạn chắc chắn muốn xóa?"
+            onConfirm={() => deleteMutation.mutate(record.id)}
+          >
+            <Button danger>Delete</Button>
+          </Popconfirm>
+        </Space>
+      ),
+    },
+  ];
+
+  return (
+    <Table
+      rowKey="id"
+      columns={columns}
+      dataSource={data}
+      loading={isLoading}
+    />
+  );
 }
 
 export default ListPage;
