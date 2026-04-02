@@ -1,43 +1,80 @@
-import { Link } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
 import { useContext } from "react";
-import { Button } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { Layout, Button, Space, Avatar, Switch, message } from "antd";
+import { useAuthStore } from "../stores/useAuthStore";
 
-export default function Navbar() {
-  const context = useContext(UserContext);
-  if (!context) return null;
-  const { user, setUser } = context;
+import { ThemeContext } from "../context/ThemeContext";
+
+export function AppHeader() {
+  const { user, setUser } = useAuthStore();
+
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setUser(null);
+    message.success("Đăng xuất thành công");
+    navigate("/login");
+  };
+
+  const headerStyle: React.CSSProperties = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    background: isDarkMode ? "#141414" : "#fff",
+    padding: "0 20px",
+    borderBottom: `1px solid ${isDarkMode ? "#303030" : "#f0f0f0"}`,
+    color: isDarkMode ? "#fff" : "#000",
+    height: 64,
+  };
 
   return (
-    <nav className="bg-blue-600 text-white shadow">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="#" className="text-xl font-semibold">
-          <strong>WEB2091 App</strong>
-        </Link>
+    <Layout.Header style={headerStyle}>
+      <Link to="/">
+        <h2 style={{ margin: 0, color: isDarkMode ? "#fff" : "#000" }}>
+          WEB2091 App
+        </h2>
+      </Link>
 
-        <div className="hidden md:flex items-center space-x-8">
-          <Link to="#" className="hover:text-gray-200">
-            Trang chủ
-          </Link>
-          <Link to="/list" className="hover:text-gray-200">
-            Danh sách
-          </Link>
-          <Link to="/add" className="hover:text-gray-200">
-            Thêm mới
-          </Link>
-        </div>
+      <Space size="large">
+        <Switch
+          checked={isDarkMode}
+          onChange={toggleTheme}
+          checkedChildren="Tối"
+          unCheckedChildren="Sáng"
+        />
 
-        <div className="hidden md:flex items-center space-x-6">
-          <span>User: {user?.name || "Guest"}</span>
-          <Button onClick={() => setUser({ name: "hoadv21" })}>Login</Button>
-          <Link to="#" className="hover:text-gray-200">
-            Đăng nhập
-          </Link>
-          <Link to="#" className="hover:text-gray-200">
-            Đăng ký
-          </Link>
-        </div>
-      </div>
-    </nav>
+        {user ? (
+          <Space size="middle">
+            <Avatar
+              src={user.avatar}
+              style={{ backgroundColor: isDarkMode ? "#177ddc" : "#1890ff" }}
+            />
+
+            <span style={{ color: isDarkMode ? "#fff" : "#000" }}>
+              Hi, <strong>{user.email}</strong>
+            </span>
+
+            <Button danger onClick={handleLogout}>
+              Logout
+            </Button>
+          </Space>
+        ) : (
+          <Space size="middle">
+            <span style={{ color: isDarkMode ? "#fff" : "#000" }}>
+              Chưa đăng nhập
+            </span>
+            <Link to="/login">
+              <Button>Login</Button>
+            </Link>
+            <Link to="/register">
+              <Button type="primary">Register</Button>
+            </Link>
+          </Space>
+        )}
+      </Space>
+    </Layout.Header>
   );
 }

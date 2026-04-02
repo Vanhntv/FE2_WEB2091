@@ -9,5 +9,12 @@
       "createdAt": "2026-04-02"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "admin01@gmail.com",
+      "password": "$2a$10$BGqEEltuMiGQahyyk2gl.e/qjjkzfkhcKtn06UEVn5fYRPhCokoMO",
+      "username": "ntvanh",
+      "id": 1
+    }
+  ]
 }

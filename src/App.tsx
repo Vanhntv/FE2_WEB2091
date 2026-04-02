@@ -15,6 +15,8 @@ import Bai3lab5 from "./pages/Lab5/bai3lab5";
 import Bai4lab5 from "./pages/Lab5/bai4lab5";
 import Bai5lab5 from "./pages/Lab5/bai5lab5";
 import EditPage from "./pages/EditPage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -33,8 +35,8 @@ function App() {
           </div>
           <div className="hidden md:flex items-center space-x-6">
             {" "}
-            <Link to="#">Đăng nhập</Link>
-            <Link to="#">Đăng ký</Link>{" "}
+            <Link to="/login">Đăng nhập</Link>
+            <Link to="/register">Đăng ký</Link>{" "}
           </div>
         </div>
       </nav>
@@ -43,6 +45,7 @@ function App() {
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/list" element={<ListPage />} />
+
           <Route path="/lab2bai2" element={<Lab2Bai2 />} />
           <Route path="/bai1" element={<Bai1 />} />
           <Route path="/bai2" element={<Bai2 />} />
@@ -55,7 +58,11 @@ function App() {
           <Route path="/bai3lab5" element={<Bai3lab5 />} />
           <Route path="/bai4lab5" element={<Bai4lab5 />} />
           <Route path="/bai5lab5" element={<Bai5lab5 />} />
+
           <Route path="/edit/:id" element={<EditPage />} />
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </div>
     </>
