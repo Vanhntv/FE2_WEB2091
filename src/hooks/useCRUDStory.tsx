@@ -5,7 +5,6 @@ import axios from "axios";
 export const useCRUDStory = () => {
   const queryClient = useQueryClient();
 
-  // GET LIST
   const { data: list = [], isLoading } = useQuery({
     queryKey: ["stories"],
     queryFn: async () => {
@@ -14,7 +13,6 @@ export const useCRUDStory = () => {
     },
   });
 
-  // ADD
   const add = useMutation({
     mutationFn: async (story: any) => {
       const { data } = await axios.post("http://localhost:3000/stories", story);
@@ -27,7 +25,6 @@ export const useCRUDStory = () => {
     },
   });
 
-  // DELETE
   const remove = useMutation({
     mutationFn: async (id: number) => {
       await axios.delete(`http://localhost:3000/stories/${id}`);
@@ -39,7 +36,6 @@ export const useCRUDStory = () => {
     },
   });
 
-  // UPDATE
   const update = useMutation({
     mutationFn: async (story: any) => {
       const { data } = await axios.put(
