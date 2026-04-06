@@ -1,4 +1,12 @@
 {
+  "stories": [
+    {
+      "id": 2,
+      "title": "abc2 sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa sửa",
+      "author": "Vanh",
+      "description": "Sản phẩm mới"
+    }
+  ],
   "products": [
     {
       "id": 1,

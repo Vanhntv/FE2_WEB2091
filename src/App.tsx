@@ -18,6 +18,7 @@ import EditPage from "./pages/EditPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AddPage from "./pages/AddPage";
+import StoryList from "./pages/StoryList";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Link to="/list">Danh sách</Link>
             <Link to="/lab2bai2">Lab2 Bài 2</Link>
             <Link to="/dashboard">Dashboard</Link>
+            <Link to="/story-list">Story</Link>
             <Link to="/add">Thêm mới</Link>
           </div>
           <div className="hidden md:flex items-center space-x-6">
@@ -63,6 +65,8 @@ function App() {
 
           <Route path="/edit/:id" element={<EditPage />} />
           <Route path="/add" element={<AddPage />} />
+
+          <Route path="/story-list" element={<StoryList />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
